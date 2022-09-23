@@ -3,6 +3,7 @@ interface Draggable {
   dragStartHandler(event: DragEvent): void;
   dragEndHandler(event: DragEvent): void;
 }
+
 interface DragTarget {
   dragOverHandler(event: DragEvent): void;
   dropHandler(event: DragEvent): void;
@@ -31,6 +32,7 @@ class State<T> {
     this.listeners.push(listenerFn);
   }
 }
+
 //Project State Management
 type Listener<T> = (items: T[]) => void;
 
@@ -64,7 +66,7 @@ class ProjectState extends State<Project> {
 
   moveProject(projectId: string, newStatus: ProjectStatus) {
     const project = this.projects.find((prj) => prj.id === projectId);
-    if (project && project.status !== newStatus ) {
+    if (project && project.status !== newStatus) {
       project.status = newStatus;
       this.updateListeners();
     }
@@ -143,6 +145,7 @@ abstract class Component<T extends HTMLElement, U extends HTMLElement> {
   templateElement: HTMLTemplateElement;
   hostElement: T;
   element: U;
+
 
   constructor(
     templateId: string,
